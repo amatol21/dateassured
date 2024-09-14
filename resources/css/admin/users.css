@@ -1,0 +1,89 @@
+.users-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.users_item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0.5rem;
+}
+
+.users_item + .users_item {
+    border-top: 1px solid #ccc;
+    padding: calc(0.5rem + 1px) 0.5rem 0.5rem 0.5rem;
+}
+
+.users_item_photo {
+    border-radius: 100%;
+    width: 3rem;
+    height: 3rem;
+}
+
+.users_item_texts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 12rem;
+    height: 3rem;
+    flex-shrink: 0;
+    flex-grow: 0;
+    padding-right: 1rem;
+    margin-right: 1rem;
+}
+
+.users_item_name {
+    color: #333;
+    font-weight: 500;
+}
+
+.users_item_email {
+    font-size: 0.75rem;
+    color: #999;
+}
+
+.users_item_role {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: #333;
+    width: 8rem;
+    height: 3rem;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.users_item_buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+
+.users_item_buttons > button {
+    margin-left: 0.5rem;
+}
+
+.users_item_status {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 1rem;
+    background-color: #ccc;
+    flex-shrink: 0;
+}
+
+.users_item_status.status-1 {
+    background-color: var(--color-green);
+}
+
+.users_item_status.status-2 {
+    background-color: var(--color-red);
+}
+
+.users-filter {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+}

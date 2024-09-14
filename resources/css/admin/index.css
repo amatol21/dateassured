@@ -1,0 +1,67 @@
+#admin {
+    display: flex;
+    padding-top: 3rem;
+}
+#admin-wrap {
+    background-image: linear-gradient(180deg,rgba(95,97,98,.1) 50%,#fff),url(/images/bg.jpg);
+    background-size: 100% 100%,10rem 10rem;
+}
+.admin_menu {
+    width: 18rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    margin-bottom: auto;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    flex-shrink: 0;
+}
+
+.admin_menu_link {
+
+}
+.admin_menu_link.active {
+    border-color: var(--color-pink);
+    outline: 2px solid var(--color-pink)
+}
+
+.admin_content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 2rem;
+}
+.admin_back-button {
+    text-decoration: none;
+    margin-right: 1rem;
+    background-color: transparent;
+    padding: 0 0.75rem 0 1rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    border-radius: 0.5rem;
+    color: #333;
+    transition: background-color 250ms;
+}
+.admin_back-button:hover {
+    background-color: #eee;
+}
+.admin_back-button::before {
+    content: '';
+    display: flex;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-left: 1px solid #333;
+    border-bottom: 1px solid #333;
+    transform: rotate(45deg);
+    margin-right: 0.25rem;
+}
+.admin_back-button + * {
+    border-left: 1px solid #333;
+    padding-left: 2rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 41rem;
+    overflow: hidden;
+    max-width: 100%;
+}

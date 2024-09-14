@@ -1,0 +1,43 @@
+#vs-form {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem auto;
+    width: 100%;
+}
+
+#vs-form .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+#vs-form label {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    justify-content: flex-end;
+}
+#vs-form label > span:first-child {
+    margin-bottom: 0.25rem;
+    color: #666;
+    font-size: 0.875rem;
+}
+#video-sessions {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5rem;
+}
+.video-session {
+    margin: 0.25rem 0;
+    padding: 0.5rem 1rem;
+    border: 1px solid #c3316a;
+    border-radius: 8px;
+    background-color: #ff458d;
+    color: #fff;
+    cursor: pointer;
+}
+.video-session:hover {
+    background-color: #f65d98;
+    border: 1px solid #7a0e38;
+}

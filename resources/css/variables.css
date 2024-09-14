@@ -1,0 +1,19 @@
+:root {
+    --width-limit: 1200px;
+    --main-bg-color: #ffffff;
+
+    --color-pink: #ff277b;
+    --color-pink-active: #f6126b;
+
+    --color-orange: #ff8232;
+    --color-orange-active: #e56d20;
+
+    --color-blue: #2894ec;
+    --color-blue-active: #138ef3;
+
+    --color-green: #1bb20d;
+    --color-green-active: #11ce01;
+
+    --color-red: #e5351e;
+    --color-red-active: #ef1f05;
+}

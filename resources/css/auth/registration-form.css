@@ -1,0 +1,28 @@
+#reg-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30rem;
+    max-width: 100%;
+    min-height: 28rem;
+    margin: 0 auto;
+    padding: 1rem;
+}
+.reg-form__title {
+    margin-right: auto;
+    color: #555;
+    font-weight: 400;
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+}
+.reg-form__forgot-pass-link {
+    margin-right: auto;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: #4b5563;
+}
+.reg-form__forgot-pass-link:hover {
+    text-decoration: underline;
+}
+
+

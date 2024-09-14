@@ -1,0 +1,63 @@
+@font-face {
+    font-family: Montserrat;
+    font-weight: 400;
+    src: url("/fonts/Montserrat/Montserrat-Regular.ttf");
+}
+@font-face {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: italic;
+    src: url("/fonts/Montserrat/Montserrat-Italic.ttf");
+}
+@font-face {
+    font-family: Montserrat;
+    font-weight: 500;
+    src: url("/fonts/Montserrat/Montserrat-SemiBold.ttf");
+}
+@font-face {
+    font-family: Montserrat;
+    font-weight: 600;
+    src: url("/fonts/Montserrat/Montserrat-Bold.ttf");
+}
+@font-face {
+    font-family: Montserrat;
+    font-weight: 900;
+    src: url("/fonts/Montserrat/Montserrat-Black.ttf");
+}
+@font-face {
+    font-family: Montserrat;
+    font-weight: 300;
+    src: url("/fonts/Montserrat/Montserrat-Light.ttf");
+}
+
+
+
+@font-face {
+    font-family: Manrope;
+    font-weight: 400;
+    src: url("/fonts/Manrope/Manrope-Regular.ttf");
+}
+@font-face {
+    font-family: Manrope;
+    font-weight: 400;
+    font-style: italic;
+    src: url("/fonts/Manrope/Manrope-Italic.ttf");
+}
+@font-face {
+    font-family: Manrope;
+    font-weight: 600;
+    src: url("/fonts/Manrope/Manrope-Bold.ttf");
+}
+@font-face {
+    font-family: Manrope;
+    font-weight: 300;
+    src: url("/fonts/Manrope/Manrope-Light.ttf");
+}
+
+
+
+@font-face {
+    font-family: "Arial Rounded MT Bold";
+    font-weight: 600;
+    src: url("/fonts/ArialRounded-Bold.ttf");
+}

@@ -1,0 +1,133 @@
+#ntf {
+    margin-left: 1rem;
+    position: relative;
+}
+.ntf_icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding-top: 2px;
+    position: relative;
+    cursor: pointer;
+}
+.ntf_icon svg {
+    stroke: #999;
+}
+.ntf_icon:hover svg {
+    stroke: #555;
+}
+.ntf_icon.ntf_has-unseen::before {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
+    position: absolute;
+    right: 7px;
+    top: 4px;
+    background-color: var(--color-red);
+    box-shadow: 0 0 15px var(--color-red);
+    z-index: 5;
+}
+.ntf_dropdown {
+    display: flex;
+    flex-direction: column;
+    width: 16rem;
+    min-height: 4rem;
+    max-height: 18rem;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: -6.5rem;
+    top: 3.5rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 6px 5px #00000007, 0 22px 18px #00000008, 0 10px 80px #0000002a;
+    overflow: visible;
+    transition: 150ms;
+}
+.ntf_dropdown::before {
+    content: '';
+    display: flex;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 3px;
+    transform: rotate(45deg);
+    background-color: #fff;
+    box-shadow: 0 0 25px #00000033;
+    position: absolute;
+    left: 7rem;
+    top: -0.55rem;
+}
+.ntf_dropdown::after {
+    content: '';
+    display: flex;
+    width: 4rem;
+    height: 2rem;
+    background-color: #fff;
+    position: absolute;
+    left: 6rem;
+    top: 0;
+    z-index: 2;
+}
+.ntf_dropdown.shown {
+    visibility: visible;
+    opacity: 1;
+    top: 4rem;
+}
+.ntf_dropdown_items {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 5;
+    overflow-y: auto;
+    border-radius: 0.5rem;
+    flex-grow: 1;
+}
+.ntf_dropdown_items-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    overflow: hidden;
+}
+.ntf_item {
+    padding: 0.5rem 0.75rem;
+    background-color: #eee;
+    border-radius: 0.35rem;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+}
+.ntf_item:hover {
+    border-color: #ccc;
+}
+.ntf_item + .ntf_item {
+    margin-top: 0.5rem;
+}
+.ntf_item.ntf_item-unseen {
+    border: 1px solid #fdbfd7;
+    background-color: #ffeaf2;
+}
+.ntf_item_text {
+    font-size: 0.75rem;
+}
+.ntf_no-items-msg {
+    padding: 1rem;
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    flex-grow: 1;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}

@@ -1,0 +1,206 @@
+header {
+    border-bottom: 1px solid #ccc;
+    z-index: 50;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-image: linear-gradient(to bottom, #fff, rgba(255, 255, 255, 0.75));
+    backdrop-filter: blur(8px);
+    overflow: visible;
+}
+header.with-shadow {
+    border-bottom-color: transparent;
+}
+header.with-shadow::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2rem;
+    pointer-events: none;
+    position: absolute;
+    bottom: -2rem;
+    background-image: linear-gradient(to bottom, #00000011, #00000000);
+}
+body {
+    padding-top: 5rem;
+}
+.header-content {
+    display: flex;
+    align-items: center;
+}
+
+.header__brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+    text-decoration: none;
+    padding: 0.5rem;
+}
+.header__brand__image {
+    width: 4rem;
+    height: auto;
+}
+
+.header__brand__text {
+    color: #555;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    font-family: "Arial Rounded MT Bold", sans-serif;
+    line-height: 1;
+}
+.header__menu {
+    display: flex;
+    margin-left: auto;
+}
+
+#active-vs-icon {
+    width: 3.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+    position: relative;
+}
+#active-vs-icon::before {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    background-color: var(--color-red);
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    box-shadow: 0 0 15px var(--color-red);
+    animation: redLight;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-duration: 1000ms;
+}
+@keyframes redLight {
+    25% {
+        box-shadow: 0 0 15px var(--color-red);
+        background-color: var(--color-red);
+    }
+    100% {
+        box-shadow: 0 0 15px transparent;
+        background-color: #999;
+    }
+}
+
+#active-vs-icon svg {
+    margin-left: 1rem;
+    stroke: #999;
+    margin-top: 5px;
+}
+#active-vs-icon:hover svg {
+    stroke: #555;
+}
+
+
+.menu-button {
+    display: none;
+    height: 2rem;
+    width: 2rem;
+    margin-left: auto;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-button > div,
+.menu-button > div::before,
+.menu-button > div::after {
+    display: block;
+    background-color: #333;
+    position: absolute;
+    height: 4px;
+    width: 30px;
+    transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 2px;
+}
+
+.menu-button > div::before {
+    content: '';
+    margin-top: -8px;
+}
+
+.menu-button > div::after {
+    content: '';
+    margin-top: 8px;
+}
+
+.menu-button.shown > div::before {
+    margin-top: 0;
+    transform: rotate(45deg);
+}
+
+.menu-button.shown > div {
+    background: rgba(33, 33, 33, 0);
+}
+
+.menu-button.shown > div::after {
+    margin-top: 0;
+    transform: rotate(-45deg);
+}
+
+@media (max-width: 700px) {
+    header {
+        border-bottom: none;
+    }
+    .header__brand__text {
+        font-size: 1.3rem;
+    }
+    #ntf {
+        margin-left: auto !important;
+    }
+    .menu-button {
+        display: flex;
+    }
+
+    .header__menu {
+        position: absolute;
+        top: 0;
+        margin-top: 5rem;
+        left: 0;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        background-color: #fff;
+        overflow: hidden;
+        justify-content: flex-start;
+    }
+
+    .header__menu form {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        flex-shrink: 0;
+    }
+    .header__menu a, .header__menu button {
+        border: none;
+        width: 80%;
+        border-top: 1px solid #ccc;
+        margin-right: 0;
+        flex-shrink: 0;
+        background-color: #fff;
+        color: #333;
+        border-radius: 0;
+    }
+
+
+    .header__menu a:first-child {
+        border-top: none;
+        margin-top: 1rem;
+    }
+
+    .header__menu {
+        height: 0;
+        transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .header__menu.shown {
+        height: calc(100vh - 5rem);
+        border-top: 1px solid #ccc;
+    }
+}

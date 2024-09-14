@@ -1,0 +1,500 @@
+#vs-modal-wrap {
+    display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    background-color: #00000066;
+    overscroll-behavior: contain;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#vs-modal {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    position: relative;
+    width: 50rem;
+    top: -5rem;
+    max-width: calc(100% - 2rem);
+    min-height: 40rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.028), 0 5px 9px rgba(0, 0, 0, 0.042), 0 20px 40px rgba(0, 0, 0, 0.07);
+    z-index: 101;
+    transition: top 0.25s;
+}
+#vs-modal.shown {
+    top: 0;
+}
+#vs-modal__close-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    border-radius: 1rem;
+    font-size: 2rem;
+    opacity: 0.5;
+    cursor: pointer;
+    background-color: transparent;
+    transition: opacity 150ms;
+}
+#vs-modal__close-button:hover {
+    opacity: 1;
+}
+.vs__team {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.vs__team__member-skeleton {
+    width: 6rem;
+    height: 6rem;
+    margin: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    background-color: #DDDBDD;
+    border-radius: 5rem;
+}
+.vs__team__member-skeleton::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(90deg, #ffffff00, #ffffff33, #ffffff99, #ffffff33, #ffffff00);
+    animation: shimmer 2s infinite;
+    content: '';
+}
+.vs__team__member {
+    width: 6rem;
+    height: 6rem;
+    margin: 0.5rem;
+    position: relative;
+    overflow: visible;
+    background-color: #DDDBDD;
+    border-radius: 5rem;
+    border: 1px solid #999;
+    /*box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04), 0 2px 2px rgba(0, 0, 0, 0.06), 0 10px 10px rgba(0, 0, 0, 0.1);*/
+}
+.vs__team__member::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-color: transparent;
+}
+.vs__team__member.is-contact::after {
+    content: '';
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-image: url(/images/heart.svg);
+    background-size: 100%;
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.vs-team-member_highlighted.gender-male {
+    outline: 5px solid rgba(52, 146, 222, 0.33);
+}
+.vs-team-member_highlighted.gender-female {
+    outline: 5px solid #de345755;
+}
+.vs__team__member-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 3rem;
+}
+.vs__team__member__age {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2rem;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    background-color: #fff;
+    text-align: center;
+    border: 1px solid #999;
+    font-size: 0.8rem;
+}
+.vs__team__member__age::after {
+    content: 'y';
+    font-size: 0.75rem;
+    margin-left: 1px;
+}
+.vs__team__no-member {
+    border: 1px solid #999;
+}
+.vs__team__no-member .vs__team__member__age {
+    display: none;
+}
+#vs-modal__header {
+    min-height: 5rem;
+    flex-grow: 0;
+    padding: 1rem 6rem 0.75rem 4rem;
+    background-color: #eee;
+    border-bottom: 1px solid #ddd;
+    border-radius: 8px 8px 0 0;
+}
+.vs__team__title {
+    margin-top: 2rem;
+    font-size: 1.25rem;
+    color: #555;
+    text-align: center;
+}
+#vs__teams-wrap {
+    margin-bottom: 2rem;
+}
+#vs-modal__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-shrink: 0;
+}
+#vs-join-button {
+    background-color: var(--color-blue);
+    padding: 0.5rem 2rem;
+    border-radius: 2rem;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 150ms;
+}
+#vs-join-button:hover {
+    background-color: var(--color-blue-active);
+}
+#vs-leave-button {
+    background-color: #d20000;
+    padding: 0.5rem 2rem;
+    border-radius: 2rem;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 150ms;
+}
+#vs-leave-button:hover {
+    background-color: #ff0000;
+}
+#vs-timer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.25;
+    height: 6rem;
+}
+#vs-timer-time {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    font-weight: 400;
+    color: #333;
+    font-family: Manrope, sans-serif;
+}
+#vs-timer-status {
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+    color: #999;
+}
+#vs-video-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    background-color: #000000;
+    border-radius: 8px;
+    padding: 1rem;
+    z-index: 100;
+}
+#vs-video-remote {
+    max-width: 100%;
+    max-height: 100%;
+    position: relative;
+}
+#vs-video-local {
+    position: absolute;
+    z-index: 10;
+    right: 2rem;
+    bottom: 2rem;
+    max-width: 30%;
+    max-height: 30%;
+    border-radius: 8px;
+    background-color: #000;
+}
+#vs-video-timer {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 8rem;
+    height: 2rem;
+    margin-left: -4rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #000;
+    background-color: #fff;
+    border-radius: 2rem;
+    z-index: 10;
+}
+#vs-video-mute-button, #vs-video-unmute-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 2rem;
+    bottom: 2rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 2rem;
+    background-color: #ffffff;
+    cursor: pointer;
+    z-index: 10;
+}
+#vs-video-mute-button:hover, #vs-video-unmute-button:hover {
+    background-color: #eeeeee;
+}
+#vs-video-mute-button > img, #vs-video-unmute-button > img {
+    max-width: 1.5rem;
+    max-height: 1.5rem;
+}
+#vs-video-leave-button {
+    position: absolute;
+}
+#vs-video-fullscreen-button, #vs-video-exit-fullscreen-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 6rem;
+    bottom: 2rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 2rem;
+    background-color: #ffffff;
+    cursor: pointer;
+    z-index: 10;
+}
+#vs-video-fullscreen-button:hover, #vs-video-exit-fullscreen-button:hover {
+    background-color: #eeeeee;
+}
+#vs-video-fullscreen-button > img, #vs-video-exit-fullscreen-button > img {
+    max-width: 1.5rem;
+    max-height: 1.5rem;
+}
+#vs-video-leave-button {
+    position: absolute;
+    height: 3rem;
+    background-color: #c90e0e;
+    color: #fff;
+    padding: 0 1.5rem;
+    border-radius: 2rem;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: UPPERCASE;
+    bottom: 2rem;
+    left: 10rem;
+    cursor: pointer;
+    user-select: none;
+}
+#vs-video-leave-button:hover {
+    background-color: #ee0808;
+}
+#vs-video-username {
+    color: #fff;
+    text-shadow: 0 0 5px BLACK;
+    font-size: 1.25rem;
+    position: absolute;
+    top: 4.5rem;
+    left: 50%;
+    z-index: 10;
+    width: 14rem;
+    margin-left: -7rem;
+    text-align: center;
+}
+#vs-rate-wrap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: #fff;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#vs-rate-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+#vs-rate-buttons {
+    display: flex;
+}
+#vs-like-button, #vs-dislike-button {
+    position: relative;
+    width: 4rem;
+    height: 4rem;
+    padding: 0.25rem;
+    margin: 0.5rem;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    transform: scale(1);
+    opacity: 1;
+    transition: transform 150ms, margin-left 500ms 500ms, margin-right 500ms 500ms, opacity 500ms 500ms;
+    cursor: pointer;
+}
+#vs-like-button::before, #vs-dislike-button::before {
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: 2rem;
+    top: 2rem;
+    border-radius: 5rem;
+    transition: 500ms;
+}
+#vs-like-button::before {
+    border: 2px solid #43a33d;
+}
+#vs-dislike-button::before {
+    border: 2px solid #fe0033;
+}
+#vs-like-button.active::before, #vs-dislike-button.active::before {
+    width: 6rem;
+    height: 6rem;
+    left: -1rem;
+    top: -1rem;
+    border-color: transparent;
+}
+#vs-like-button:hover, #vs-dislike-button:hover {
+    transform: scale(1.15);
+}
+#vs-like-button.active, #vs-dislike-button.active {
+    transform: scale(1.45);
+    transition: transform 0ms;
+    animation: rateButtonAnim;
+    animation-duration: 250ms;
+    animation-direction: reverse;
+}
+#vs-like-button.inactive {
+    pointer-events: none;
+    margin-left: -4rem;
+    opacity: 0;
+}
+#vs-dislike-button.inactive {
+    pointer-events: none;
+    margin-right: -4rem;
+    opacity: 0;
+}
+#vs-like-button img, #vs-dislike-button img {
+    max-width: 100%;
+    max-height: 100%;
+    position: relative;
+    z-index: 5;
+}
+#vs-rate-skip-button {
+    border: 2px solid #ddd;
+    padding: 0.5rem 2rem;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+    transition: border-color 150ms, opacity 500ms 500ms;
+    opacity: 1;
+}
+#vs-rate-skip-button:hover {
+    border-color: #ccc;
+}
+#vs-rate-skip-button.inactive {
+    pointer-events: none;
+    opacity: 0;
+}
+#vs-gone-modal .modal-content{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    width: 30rem;
+    max-width: 100%;
+}
+.vs-gone-modal_title {
+    font-size: 1.5rem;
+    color: #333;
+    text-align: center;
+}
+.vs-gone-modal_hint {
+    margin: 1rem 0;
+    font-size: 0.85rem;
+    text-align: center;
+    color: #555;
+}
+.vs-gone-modal_buttons {
+    display: flex;
+    justify-content: center;
+}
+@keyframes rateButtonAnim {
+    0% {
+        transform: scale(1.4);
+    }
+    40% {
+        transform: scale(1.4);
+    }
+    70% {
+        transform: scale(1.55);
+    }
+    100% {
+        transform: scale(1.15);
+    }
+}
+
+@media (max-width: 600px) {
+    #vs-modal-wrap {
+        padding: 1rem 0;
+    }
+    #vs-video-local {
+        bottom: 6rem;
+        right: 1rem;
+    }
+    #vs-modal__header {
+        min-height: 5rem;
+        flex-grow: 0;
+        padding: 1rem 3rem 0.75rem 1rem;
+    }
+    #vs-video-timer {
+        position: fixed;
+        left: 50%;
+        top: 1rem;
+        margin-left: -4rem;
+    }
+    #vs-rate-title {
+        font-size: 1.5rem;
+    }
+}

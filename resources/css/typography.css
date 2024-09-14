@@ -1,0 +1,51 @@
+h2 {
+    font-weight: 500;
+    font-size: 1.25rem;
+}
+
+h3 {
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+
+.ck-content h1 {
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.ck-content p {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+    text-align: justify;
+}
+
+
+.ck-content .image {
+    clear: both !important;
+    display: table;
+    margin: .9em auto;
+    min-width: 50px;
+    text-align: center;
+}
+
+.ck-content .image-style-side {
+    float: right;
+    margin-left: 1.5rem;
+    max-width: 50%;
+}
+.ck-content img {
+    max-width: 100%;
+}
+.ck-content p > img {
+    margin: 0.5rem 0;
+}
+@media (max-width: 600px) {
+    .ck-content .image-style-side {
+        width: 100%;
+        max-width: 100%;
+    }
+}
