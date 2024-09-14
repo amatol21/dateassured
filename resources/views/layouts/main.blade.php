@@ -43,7 +43,6 @@
             // We need to reload page when user clicks back button.
             addEventListener("popstate", () => window.location.reload());
         </script>
-		  <h1>111</h1>
 
         @include('common.ui.toast')
         @include('videoSessions.connection')
