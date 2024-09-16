@@ -58,6 +58,18 @@ class AccountController extends Controller
         $user->second_name = $request->post('second_name', $user->second_name);
         $user->age = intval($request->post('age', $user->age));
         $user->gender = Gender::from(intval($request->post('gender', $user->gender)));
+		  $user->nationality = $request->post('nationality', $user->nationality);
+		  $user->ethnicity = $request->post('ethnicity', $user->ethnicity);
+		  $user->religion = $request->post('religion', $user->religion);
+		  $user->languages = $request->post('languages', $user->languages);
+		  $user->body = $request->post('body', $user->body);
+		  $user->education = $request->post('education', $user->education);
+		  $user->occupation = $request->post('occupation', $user->occupation);
+		  $user->sexuality = $request->post('sexuality', $user->sexuality);
+		  $user->star_sign = $request->post('star_sign', $user->sexuality); 
+		  $user->relationship_status = $request->post('relationship_status', $user->relationship_status);
+		  $user->kids = $request->post('kids', $user->kids); 
+		  $user->about = $request->post('about', $user->about); 
         $user->save();
 
         return $request->ajax()

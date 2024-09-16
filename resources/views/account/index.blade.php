@@ -12,7 +12,6 @@
 
     <div id="account">
         <div class="width-limiter">
-
             <div class="account_wrap">
                 <div class="account_left">
                     <div class="account_info account_pad">

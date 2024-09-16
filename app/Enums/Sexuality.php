@@ -20,4 +20,14 @@ enum Sexuality: int
         if ($this->value === 3) $res = 'straight';
         return $res;
     }
+
+	 public function sexuality_type_text(): string
+	{
+		return match($this) {
+			Sexuality::STRAIGHT => 'Straight',
+			Sexuality::LESBIAN => 'Lesbian',
+			Sexuality::GAY => 'Gay',
+			Sexuality::BI => 'Bi'
+		};
+	}
 }
