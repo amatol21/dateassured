@@ -39,7 +39,7 @@ $kids_arr = Kids::cases();
     <h2 class="account_title">Profile</h2>
 
 	 @php
-		dump(auth()->user()->sexuality->value );
+		//dump(auth()->user()->sexuality->value );
 	 @endphp
 
     <div>
