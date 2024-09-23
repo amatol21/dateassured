@@ -1,108 +1,134 @@
 #profile-form {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
 }
+
+.profile_form {
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+}
+
 .profile_fields {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
-    gap: 1rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+	gap: 1rem;
 }
+
 .profile_avatar_wrap {
-    display: flex;
-    width: 12rem;
-    height: 12rem;
-    border-radius: 10rem;
-    overflow: hidden;
-    position: relative;
-    margin: 0 auto 2rem auto;
-    cursor: pointer;
-    box-shadow: 0 0 0 1px #999;
-    border: 10px solid #fff;
+	display: flex;
+	width: 12rem;
+	height: 12rem;
+	border-radius: 10rem;
+	overflow: hidden;
+	position: relative;
+	margin: 0 auto 2rem auto;
+	cursor: pointer;
+	box-shadow: 0 0 0 1px #999;
+	border: 10px solid #fff;
 }
+
 .profile_avatar_wrap::before {
-    content: 'Change...';
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: #fff;
-    text-shadow: 0 0 3px #00000066;
-    background-color: #00000033;
-    opacity: 0;
-    backdrop-filter: blur(5px);
-    transition: opacity 250ms;
+	content: 'Change...';
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: #fff;
+	text-shadow: 0 0 3px #00000066;
+	background-color: #00000033;
+	opacity: 0;
+	backdrop-filter: blur(5px);
+	transition: opacity 250ms;
 }
+
 .profile_avatar_wrap:hover::before {
-    opacity: 1;
+	opacity: 1;
 }
+
 .profile_avatar {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
+
 .profile_buttons {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 2rem;
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 2rem;
 }
+
 #change-pass-form {
-    width: 24rem;
-    max-width: calc(100% - 2rem);
+	width: 24rem;
+	max-width: calc(100% - 2rem);
 }
+
 .verify-email_send-form,
 .verify-email_sent-msg {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-grow: 1;
-    width: 25rem;
-    max-width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-grow: 1;
+	width: 25rem;
+	max-width: 100%;
 }
+
 .verify-email_buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: auto;
+	display: flex;
+	justify-content: center;
+	margin-top: auto;
 }
+
 .verify-email_icon {
-    display: flex;
-    justify-content: center;
-    padding-left: 1rem;
-    margin-bottom: 1rem;
+	display: flex;
+	justify-content: center;
+	padding-left: 1rem;
+	margin-bottom: 1rem;
 }
+
 .verify-email_title {
-    font-family: 'Arial Rounded MT Bold', sans-serif;
-    text-align: center;
-    font-size: 1.25rem;
-    color: #333;
+	font-family: 'Arial Rounded MT Bold', sans-serif;
+	text-align: center;
+	font-size: 1.25rem;
+	color: #333;
 }
+
 .verify-email_hint {
-    margin-top: 0.5rem;
-    color: #333;
-    font-size: 0.85rem;
-    text-align: center;
+	margin-top: 0.5rem;
+	color: #333;
+	font-size: 0.85rem;
+	text-align: center;
 }
+
 .verify-email_time-hint {
-    margin-top: 0.5rem;
-    color: #333;
-    font-size: 0.85rem;
-    text-align: center;
+	margin-top: 0.5rem;
+	color: #333;
+	font-size: 0.85rem;
+	text-align: center;
 }
+
 @media (max-width: 700px) {
-    .profile_buttons {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    .profile_buttons > button {
-        margin: 0;
-    }
-    #profile-form {
-        padding: 1rem;
-    }
+	.profile_buttons {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+
+	.profile_buttons>button {
+		margin: 0;
+	}
+
+	#profile-form {
+		padding: 1rem;
+	}
+
+	.profile_form {
+		padding: 1rem;
+	}
 }

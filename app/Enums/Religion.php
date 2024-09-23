@@ -17,7 +17,7 @@ enum Religion: int
 		return __('enums.religion.'.$this->value);
 	}
 
-	public function religion_text(): string
+	public function religion_type_text(): string
 	{
 		return match($this) {
 			Religion::CHRISTIAN => 'Christian',

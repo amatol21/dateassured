@@ -42,11 +42,13 @@ $kids_arr = Kids::cases();
 
 	@php
 	//dump(auth()->user()->sexuality->value );
+	$user = auth()->user();
+	//dump($user);
 	@endphp
 
 	<div>
 		<form action="{{ route('account.saveProfile', [], false) }}" method="POST" enctype="multipart/form-data"
-				id="profile-form">
+				class="profile_form">
 			@csrf
 
 			@include('common.ui.photoInput', ['value' => User::current()->getPhotoUrl(Size::LARGE)])
@@ -54,8 +56,8 @@ $kids_arr = Kids::cases();
 			<div class="profile_fields">
 				<label>
 					<span class="label">Username</span>
-					<input type="text" name="username" class="input" value="{{ old('username', auth()->user()->username) }}">
-					<span class="error" data-for="username"></span>
+					<input type="text" name="username" class="input" value="{{ old('username', $user->username) }}">
+					{{--<span class="error" data-for="username"></span>--}}
 					@error('username')
 					<span class="error">{{ $message }}</span>
 					@enderror
@@ -63,7 +65,7 @@ $kids_arr = Kids::cases();
 
 				<label>
 					<span class="label">Email</span>
-					<input type="email" class="input" value="{{ auth()->user()->email }}" disabled>
+					<input type="email" class="input" value="{{ $user->email }}" disabled>
 				</label>
 
 				<label>
@@ -76,22 +78,16 @@ $kids_arr = Kids::cases();
 							@if(auth()->user()->gender === Gender::FEMALE) selected @endif>Female
 						</option>
 					</select>
-					<span class="error" data-for="gender"></span>
-				</label>
-
-				<label>
-					<span class="label">Age</span>
-					<input type="number" name="age" min="18" max="80" class="input" value="{{ old('age', auth()->user()->age) }}">
-					<span class="error" data-for="age"></span>
-					@error('age')
+					{{--<span class="error" data-for="gender"></span>--}}
+					@error('gender')
 					<span class="error">{{ $message }}</span>
 					@enderror
 				</label>
 
 				<label>
 					<span class="label">First name</span>
-					<input type="text" name="first_name" class="input" value="{{ old('first_name', auth()->user()->first_name) }}">
-					<span class="error" data-for="first_name"></span>
+					<input type="text" name="first_name" class="input" value="{{ old('first_name', $user->first_name) }}">
+					{{--<span class="error" data-for="username"></span>--}}
 					@error('first_name')
 					<span class="error">{{ $message }}</span>
 					@enderror
@@ -99,17 +95,26 @@ $kids_arr = Kids::cases();
 
 				<label>
 					<span class="label">Second name</span>
-					<input type="text" name="second_name" class="input" value="{{ old('second_name', auth()->user()->second_name) }}">
-					<span class="error" data-for="second_name"></span>
+					<input type="text" name="second_name" class="input" value="{{ old('second_name', $user->second_name) }}">
+					{{--<span class="error" data-for="second_name"></span>--}}
 					@error('second_name')
 					<span class="error">{{ $message }}</span>
 					@enderror
 				</label>
 
 				<label>
+					<span class="label">Age</span>
+					<input type="number" name="age" min="18" max="80" class="input" value="{{ old('age', $user->age) }}">
+					{{--<span class="error" data-for="age"></span>--}
+					@error('age')
+					<span class="error">{{ $message }}</span>
+					@enderror
+				</label>
+
+				<label>
 					<span class="label">Nationality</span>
-					<input type="text" name="nationality" class="input" value="{{ old('nationality', auth()->user()->nationality) }}"> 
-					<span class="error" data-for="nationality"></span>
+					<input type="text" name="nationality" class="input" value="{{ old('nationality', $user->nationality) }}"> 
+					{{--<span class="error" data-for="nationality"></span>--}}
 					@error('nationality')
 					<span class="error">{{ $message }}</span>
 					@enderror
@@ -120,12 +125,14 @@ $kids_arr = Kids::cases();
 					<select name="ethnicity" class="select">
 						@foreach ($ethnicity_arr as $ethnicity)
 							<option value="{{ $ethnicity->value }}"
-								@if(old('ethnicity', auth()->user()->ethnicity) === $ethnicity->value) selected @endif>
-									{{ __('enums.ethnicity.'.$ethnicity->value) }}
+								@if(auth()->user()->ethnicity === $ethnicity->value) selected @endif>{{ ucfirst(strtolower($ethnicity->name)) }}
 							</option> 
 						@endforeach                        
 					</select>
-					<span class="error" data-for="ethnicity"></span>
+					{{--<span class="error" data-for="ethnicity"></span>--}}
+					@error('ethnicity')
+					<span class="error">{{ $message }}</span>
+					@enderror
 				</label>
 
 				<label>
@@ -133,25 +140,29 @@ $kids_arr = Kids::cases();
 					<select name="religion" class="select">
 						@foreach ($religion_arr as $religion)
 							<option value="{{ $religion->value }}"
-								@if(old('religion', auth()->user()->religion) === $religion->value) selected @endif>
-								{{ __('enums.religion.'.$religion->value) }}
+								@if(auth()->user()->religion === $religion->value) selected @endif>{{ Religion::from($religion->value)->religion_type_text() }}
 							</option> 
 						@endforeach                        
 					</select>
-					<span class="error" data-for="religion"></span>
+					{{--<span class="error" data-for="religion"></span>--}}
+					@error('religion')
+					<span class="error">{{ $message }}</span>
+					@enderror
 				</label>
 				
 				<label>
-					<span class="label">Languages spoken</span>
+					<span class="label">Language spoken</span>
 					<select name="language" class="select">
-						@foreach($languages_arr as $language)
+						@foreach ($languages_arr as $language)
 							<option value="{{ $language->value }}"
-								@if(old('language', auth()->user()->language) === $language->value) selected @endif>
-								{{ __('enums.language.'.$language->value) }}
-							</option>
-						@endforeach
-					</select> 
-					<span class="error" data-for="languages"></span>
+								@if(auth()->user()->language === $language->value) selected @endif>{{ Languages::from($language->value)->language_type_text() }}
+							</option> 
+						@endforeach                        
+					</select>
+					{{--<span class="error" data-for="languages"></span>--}
+					@error('language')
+					<span class="error">{{ $message }}</span>
+					@enderror
 				</label>
 
 				<label>
@@ -159,12 +170,14 @@ $kids_arr = Kids::cases();
 					<select name="body" class="select">
 						@foreach ($body_arr as $body)
 							<option value="{{ $body->value }}"
-								@if(old('body', auth()->user()->body) === $body->value) selected @endif>
-								{{ __('enums.body.'.$body->value) }}
+								@if(auth()->user()->body === $body->value) selected @endif>{{ Body::from($body->value)->body_type_text() }}
 							</option> 
 						@endforeach                        
 					</select>
-					<span class="error" data-for="body"></span>
+					{{--<span class="error" data-for="body"></span>--}}
+					@error('body')
+					<span class="error">{{ $message }}</span>
+					@enderror
 				</label>
 
 				<label>
@@ -172,12 +185,14 @@ $kids_arr = Kids::cases();
 					<select name="education" class="select">
 						@foreach ($education_arr as $education)
 							<option value="{{ $education->value }}"
-								@if(old('education', auth()->user()->education) === $education->value) selected @endif>
-								{{ __('enums.education.'.$education->value) }}
+								@if(auth()->user()->education === $education->value) selected @endif>{{ Education::from($education->value)->education_type_text() }}
 							</option> 
 						@endforeach                        
 					</select>
-					<span class="error" data-for="education"></span>
+					{{--<span class="error" data-for="education"></span>--}}
+					@error('education')
+					<span class="error">{{ $message }}</span>
+					@enderror
 				</label>
 
 				<label>
@@ -185,12 +200,14 @@ $kids_arr = Kids::cases();
 					<select name="occupation" class="select">
 						@foreach ($occupation_arr as $occupation)
 							<option value="{{ $occupation->value }}" data-val="{{gettype(auth()->user()->occupation)}}"
-								@if(old('occupation', auth()->user()->occupation) === $occupation->value) selected @endif>
-								{{ __('enums.occupation.'.$occupation->value) }}
+								@if(auth()->user()->occupation === $occupation->value) selected @endif>{{ Occupation::from($occupation->value)->occupation_type_text() }}
 							</option> 
 						@endforeach                        
 					</select>
-					<span class="error" data-for="occupation"></span>
+					{{--<span class="error" data-for="occupation"></span>--}}
+					@error('occupation')
+					<span class="error">{{ $message }}</span>
+					@enderror
 				</label>
 
 				<label>
@@ -198,12 +215,14 @@ $kids_arr = Kids::cases();
 					<select name="sexuality" class="select">
 						@foreach ($sexuality_arr as $sexuality)
 							<option value="{{ $sexuality->value }}" data-val="{{auth()->user()->sexuality}}" 
-								@if(old('sexuality', auth()->user()->sexuality) === $sexuality->value) selected @endif>
-								{{ __('enums.sexuality.'.$sexuality->value) }}
+								@if( auth()->user()->sexuality->value === $sexuality->value) selected @endif>{{ Sexuality::from($sexuality->value)->sexuality_type_text() }}
 							</option> 
 						@endforeach                        
 					</select>
-					<span class="error" data-for="sexuality"></span>
+					{{--<span class="error" data-for="sexuality"></span>--}}
+					@error('sexuality')
+					<span class="error">{{ $message }}</span>
+					@enderror
 				</label>
 
 				<label>
@@ -211,12 +230,14 @@ $kids_arr = Kids::cases();
 					<select name="star_sign" class="select">
 						@foreach ($star_sign_arr as $star_sign)
 							<option value="{{ $star_sign->value }}"
-								@if(old('star_sign', auth()->user()->star_sign) === $star_sign->value) selected @endif>
-								{{ __('enums.star_sign.'.$star_sign->value) }}
+								@if(auth()->user()->star_sign === $star_sign->value) selected @endif>{{ StarSign::from($star_sign->value)->star_sign_type_text() }}
 							</option> 
 						@endforeach                        
 					</select>
-					<span class="error" data-for="star_sign"></span>
+					{{--<span class="error" data-for="star_sign"></span>--}
+					@error('star_sign')
+					<span class="error">{{ $message }}</span>
+					@enderror
 				</label>
 
 				<label>
@@ -224,12 +245,14 @@ $kids_arr = Kids::cases();
 					<select name="relationship_status" class="select">
 						@foreach ($relationship_status_arr as $relationship_status)
 							<option value="{{ $relationship_status->value }}"
-								@if(old('relationship_status', auth()->user()->relationship_status) === $relationship_status->value) selected @endif>
-								{{ __('enums.relationship_status.'.$relationship_status->value) }}
+								@if(auth()->user()->relationship_status === $relationship_status->value) selected @endif>{{ RelationshipStatus::from($relationship_status->value)->relationship_status_type_text() }}
 							</option> 
 						@endforeach                        
 					</select>
-					<span class="error" data-for="relationship_status"></span>
+					{{--<span class="error" data-for="relationship_status"></span>--}}
+					@error('relationshiop_status')
+					<span class="error">{{ $message }}</span>
+					@enderror
 				</label>
 
 				<label>
@@ -237,22 +260,52 @@ $kids_arr = Kids::cases();
 					<select name="kids" class="select">
 						@foreach ($kids_arr as $kids)
 							<option value="{{ $kids->value }}"
-								@if(old('kids', auth()->user()->kids) === $kids->value) selected @endif>
-								{{ __('enums.kids.'.$kids->value) }}
+								@if(auth()->user()->kids === $kids->value) selected @endif>{{ Kids::from($kids->value)->kids_type_text() }}
 							</option> 
 						@endforeach                        
 					</select>
-					<span class="error" data-for="kids"></span>
+					{{--<span class="error" data-for="kids"></span>--}}
+					@error('kids')
+					<span class="error">{{ $message }}</span>
+					@enderror
 				</label>
 
+				
+
+				
+{{--
+				<label>
+					<span class="label">Your country</span>
+					<select name="have_kids" class="select">
+						@foreach ($have_kids_arr as $have_kids)
+							<option value="{{ $have_kids->value }}"
+								@if(auth()->user()->have_kids === $have_kids->value) selected @endif>{{ HaveKids::from($have_kids->value)->have_kids_type_text() }}
+							</option> 
+						@endforeach                        
+					</select>
+					<span class="error" data-for="have_kids"></span>
+				</label>
+
+				<label>
+					<span class="label">Your city</span>
+					<select name="have_kids" class="select">
+						@foreach ($have_kids_arr as $have_kids)
+							<option value="{{ $status->value }}"
+								@if(auth()->user()->have_kids === $have_kids->value) selected @endif>{{ HaveKids::from($have_kids->value)->have_kids_type_text() }}
+							</option> 
+						@endforeach                        
+					</select>
+					<span class="error" data-for="have_kids"></span>
+				</label>
+--}}
 				
 			</div>
 
 			<div class="profile_text">
 				<label>
 					<span class="label">About yourself</span>
-					<textarea name="about" class="input" maxlength="500">{{ old('about', auth()->user()->about) }}</textarea> 
-					<span class="error" data-for="about"></span>
+					<textarea name="about" class="input" maxlength="500">{{ auth()->user()->about }}</textarea> 
+					{{--<span class="error" data-for="about"></span>--}}
 					@error('about')
 					<span class="error">{{ $message }}</span>
 					@enderror

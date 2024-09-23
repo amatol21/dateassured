@@ -15,5 +15,17 @@ enum Ethnicity: int
     {
         return __('enums.ethnicity.'.$this->value);
     }
+
+	public function ethnicity_type_text(): string
+	{
+		return match($this) {
+			Ethnicity::ASIAN => 'Asian',
+			Ethnicity::ARAB => 'Arab',
+			Ethnicity::CAUCASIAN => 'Caucasian',
+			Ethnicity::AFRICAN => 'African',
+			Ethnicity::AMERICAN => 'American',
+			Ethnicity::LATINO => 'Latino'
+		};
+	}
 	 
 }
