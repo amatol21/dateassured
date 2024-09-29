@@ -9,12 +9,14 @@
 
 		<meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1, initial-scale=1">
 		<meta name="description" content="@yield('description', 'Online dating service')">
-		<link rel="preload" as="image" href="/images/icons.svg"/>
+		<link rel="preload" as="image" href="{{ asset('images/icons.svg') }}"/>
+		<link rel="preload" as="style" href="{{ asset('css/index.css') }}"/> 
+		<link rel="stylesheet" href="{{ asset('css/index.css') }}"/>
+		<link rel="icon" type="image/x-icon" href="{{ asset('images/logo.svg') }}">
+
+		{{--<link rel="preload" as="image" href="/images/icons.svg"/>
 		<link rel="preload" as="style" href="/css/index.css"/>
-		<link rel="icon" type="image/x-icon" href="/images/logo.svg">
-		<!--<link rel="preload" as="image" href="{{ asset('public/images/icons.svg') }}"/>
-		<link rel="preload" as="style" href="{{ asset('public/css/index.css') }}"/> 
-		<link rel="icon" type="image/x-icon" href="{{ asset('public/images/logo.svg') }}">-->
+		<link rel="icon" type="image/x-icon" href="/images/logo.svg">--}}
 		
 
 
@@ -32,8 +34,7 @@
 			) ?>;
 		</script>
 
-		<link rel="stylesheet" href="/css/index.css"/>
-		<script src="/js/script.js" defer></script>
+		<script src="{{ asset('js/script.js')}}" defer></script>
 		<!--<link rel="stylesheet" href="{{ asset('public/css/index.css') }}"/>
 		<script src="{{ asset('public/js/script.js') }}"></script>--> 
 	</head>

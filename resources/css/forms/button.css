@@ -1,111 +1,123 @@
 .btn {
-    height: 2.5rem;
-    padding: 0 1.5rem;
-    border-radius: 0.5rem;
-    border: 1px solid #999;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #333;
-    font-size: 1rem;
-    background-color: transparent;
-    cursor: pointer;
-    justify-content: center;
-    text-align: center;
+	height: 2.5rem;
+	padding: 0 1.5rem;
+	border-radius: 0.5rem;
+	border: 1px solid #999;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	color: #333;
+	font-size: 1rem;
+	background-color: transparent;
+	cursor: pointer;
+	justify-content: center;
+	text-align: center;
 }
+
 .btn-small {
-    height: 1.75rem;
-    padding: 0 1rem;
-    border-radius: 0.25rem;
-    border: 1px solid #999;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #333;
-    font-size: 0.8rem;
-    background-color: transparent;
-    cursor: pointer;
-    justify-content: center;
-    text-align: center;
+	height: 1.75rem;
+	padding: 0 1rem;
+	border-radius: 0.25rem;
+	border: 1px solid #999;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	color: #333;
+	font-size: 0.8rem;
+	background-color: transparent;
+	cursor: pointer;
+	justify-content: center;
+	text-align: center;
 }
-.btn-outlined, .btn-outlined-static {
-    border-width: 2px;
-    background-color: transparent !important;
-    color: #333 !important;
+
+.btn-outlined,
+.btn-outlined-static {
+	border-width: 2px;
+	background-color: transparent !important;
+	color: #333 !important;
 }
+
 .btn-outlined-static:not(:hover) {
-    border-color: #ccc !important;
+	border-color: #ccc !important;
 }
+
 .btn-outlined-static:hover,
 .btn-outlined:hover {
-    color: #000 !important;
+	color: #000 !important;
 }
+
 .btn:hover {
-    border-color: #555;
-    color: #000;
+	border-color: #555;
+	color: #000;
 }
+
 .btn:disabled {
-    opacity: 0.25;
-    cursor: default;
-    pointer-events: none;
-    filter: saturate(0);
+	opacity: 0.25;
+	cursor: default;
+	pointer-events: none;
+	filter: saturate(0);
 }
 
 .btn-pink {
-    background-color: var(--color-pink);
-    border-color: var(--color-pink);
-    color: #fff;
+	background-color: var(--color-pink);
+	border-color: var(--color-pink);
+	color: #fff;
 }
+
 .btn-pink:hover {
-    border-color: var(--color-pink-active);
-    background-color: var(--color-pink-active);
-    color: #fff;
+	border-color: var(--color-pink-active);
+	background-color: var(--color-pink-active);
+	color: #fff;
 }
 
 
 .btn-black {
-    border-color: #222;
-    background-color: #222;
-    color: #fff;
+	border-color: #222;
+	background-color: #222;
+	color: #fff;
 }
+
 .btn-black:hover {
-    color: #fff;
-    border-color: #000;
-    background-color: #000;
+	color: #fff;
+	border-color: #000;
+	background-color: #000;
 }
 
 
 .btn-orange {
-    border-color: var(--color-orange);
-    background-color: var(--color-orange);
-    color: #fff;
+	border-color: var(--color-orange);
+	background-color: var(--color-orange);
+	color: #fff;
 }
+
 .btn-orange:hover {
-    color: #fff;
-    border-color: var(--color-orange-active);
-    background-color: var(--color-orange-active);
+	color: #fff;
+	border-color: var(--color-orange-active);
+	background-color: var(--color-orange-active);
 }
 
 
 .btn-blue {
-    border-color: var(--color-blue);
-    background-color: var(--color-blue);
-    color: #fff;
+	border-color: var(--color-blue);
+	background-color: var(--color-blue);
+	color: #fff;
 }
+
 .btn-blue:hover {
-    color: #fff;
-    border-color: var(--color-blue-active);
-    background-color: var(--color-blue-active);
+	color: #fff;
+	border-color: var(--color-blue-active);
+	background-color: var(--color-blue-active);
 }
 
 
 .btn-red {
-    border-color: var(--color-red);
-    background-color: var(--color-red);
-    color: #fff;
+	border-color: var(--color-red);
+	background-color: var(--color-red);
+	color: #fff;
 }
+
 .btn-red:hover {
-    color: #fff;
-    border-color: var(--color-red-active);
-    background-color: var(--color-red-active);
+	color: #fff;
+	border-color: var(--color-red-active);
+	background-color: var(--color-red-active);
 }

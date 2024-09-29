@@ -140,23 +140,41 @@
 	margin-right: 0.5rem;
 }
 
-.s2__brand {
+
+
+.s2__advertisement {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	position: relative;
+	width: 100%;
+	height: 450px;
+	overflow: hidden;
+}
+
+.s2__brand {
+	position: absolute;
+	top: 10%;
+	left: 3%;
+	display: flex;
+	justify-content: start;
+	align-content: center;
 	height: 5rem;
 	text-decoration: none;
+	margin: 0 0 20px 0;
 	padding: 0.5rem;
-	position: relative;
 	z-index: 2;
 }
 
-.s2__brand__image {
+.s2__brand-image {
 	width: 4rem;
 	height: auto;
 }
 
-.s2__brand__text {
+.s2__brand-text {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
 	color: #555;
 	font-size: 1.5rem;
 	margin-left: 1rem;
@@ -164,25 +182,27 @@
 	line-height: 1;
 }
 
-.s2_planet {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: auto;
+.s2__planet {
+	width: auto;
+	height: 100%;
 	z-index: 0;
 }
 
-.s2_phones {
+.s2__phones {
 	position: absolute;
-	top: 0;
+	top: 50%;
 	right: 0;
+	transform: translateY(-50%);
+	height: 100%;
+	width: auto;
 }
 
-.s2_header {
-	position: relative;
+.s2__header {
+	position: absolute;
+	left: 7%;
+	top: 35%;
 	z-index: 1;
-	font-size: 50px;
+	font-size: 60px;
 	font-style: italic;
 	font-family: Manrope, sans-serif;
 }
@@ -335,6 +355,35 @@
 	margin-top: 1rem;
 }
 
+
+
+@media (min-width: 700px) and (max-width: 992px) {
+	.s2__advertisement {
+		overflow: hidden;
+	}
+
+	.s2__brand {
+		top: 3%;
+	}
+
+	.s2__phones {
+		height: 90%;
+		width: auto;
+		right: -10%;
+		bottom: 0;
+	}
+
+	.s2__header {
+		top: 30%;
+		font-size: 45px;
+	}
+
+}
+
+
+
+
+
 @media (max-width: 700px) {
 	.s1 {
 		background-image: linear-gradient(to top, #ffafd0db, #ffffff), url(/images/people.jpg);
@@ -363,6 +412,49 @@
 		width: 1.5rem;
 		height: 1.5rem;
 	}
+
+
+	.s2__advertisement {
+		position: relative;
+		width: 100%;
+		height: 450px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+	}
+
+	.s2__brand {
+		top: 5%;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.s2__brand-image {
+		width: 4rem;
+		height: auto;
+	}
+
+	.s2__phones {
+		display: none;
+	}
+
+	.s2__header {
+		left: 50%;
+		top: 30%;
+		transform: translateX(-50%);
+		width: 100%;
+		font-size: 45px;
+		text-align: center;
+	}
+
+	.s2__planet {
+		width: auto;
+		height: 100%;
+		z-index: 0;
+	}
+
+
 
 	.s3 {
 		margin: 5rem 1rem;

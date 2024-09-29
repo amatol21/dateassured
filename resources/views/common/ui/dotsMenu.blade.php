@@ -119,6 +119,7 @@
                 onclick="
                     document.dispatchEvent(new CustomEvent('dots-menu-hide', {detail: this}));
                     document.dispatchEvent(new CustomEvent('{{ $event }}', {detail: {{ json_encode($option['payload']) }}}));
+						  console.log('111');
             ">{{ $option['label'] }}</div>
         @endforeach
     </div>
