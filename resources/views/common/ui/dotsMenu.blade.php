@@ -137,7 +137,7 @@
 		// Show options when user clicks on menu dots.
 		document.addEventListener('dots-menu-open', async e => {
 			let menu = e.detail.parentNode;
-			console.log(e);
+			//console.log(e);
 			let options = menu.querySelector('.dots-menu_options');
 			let rect = e.detail.getBoundingClientRect();
 			options.style.opacity = '0';

@@ -157,7 +157,7 @@ use Illuminate\Pagination\Paginator;
 
 			// Cancel publication
 			document.addEventListener('cancel-article-publication', async e => {
-					console.log('5');
+					//console.log('5');
 					if (confirm('Do you want to cancel publication of news "' + (e.detail.title.slice(0, 50) + '...') + '"?')) {
 						let res = await applyToArticle(e.detail.id, 'cancel-publication');
 						if (res) window.location.reload();
