@@ -115,58 +115,58 @@ use Illuminate\Pagination\Paginator;
     </div>
 
 
-    <script>
-        (() => {
-            initTableSorting('#articles-table', '#articles-filter');
+	<script>
+		(() => {
+			initTableSorting('#articles-table', '#articles-filter');
 
-            async function applyToArticle(articleId, action) {
-                try {
-                    let data = {
-                        _token: '{{ csrf_token() }}',
-                        id: articleId,
-                    };
-                    let res = await fetch('/admin/blog/' + action, {
-                        method: 'POST',
-                        body: JSON.stringify(data),
-                        headers: {'Content-Type': 'application/json'}
-                    });
-                    if (res.ok) {
-                        return true;
-                    }
-                } catch (e) {
-                    console.error(e);
-                }
-                return false;
-            }
+			async function applyToArticle(articleId, action) {
+				try {
+					let data = {
+						_token: '{{ csrf_token() }}',
+						id: articleId,
+					};
+					let res = await fetch('/admin/blog/' + action, {
+						method: 'POST',
+						body: JSON.stringify(data),
+						headers: {'Content-Type': 'application/json'}
+					});
+					if (res.ok) {
+						return true;
+					}
+				} catch (e) {
+					console.error(e);
+				}
+				return false;
+			}
 
-            // Delete
-            document.addEventListener('delete-article', async e => {
-                if (confirm('Are you really want to delete article "' + (e.detail.title.slice(0, 50) + '...') + '"?')) {
-                    let res = await applyToArticle(e.detail.id, 'delete');
-                    if (res) window.location.reload();
-                }
-            });
+			// Delete
+			document.addEventListener('delete-article', async e => {
+				if (confirm('Are you really want to delete article "' + (e.detail.title.slice(0, 50) + '...') + '"?')) {
+					let res = await applyToArticle(e.detail.id, 'delete');
+					if (res) window.location.reload();
+				}
+			});
 
-            // Publish
-            document.addEventListener('publish-article', async e => {
-                if (confirm('Do you want to publish news "' + (e.detail.title.slice(0, 50) + '...') + '"?')) {
-                    let res = await applyToArticle(e.detail.id, 'publish');
-                    if (res) window.location.reload();
-                }
-            });
+			// Publish
+			document.addEventListener('publish-article', async e => {
+				if (confirm('Do you want to publish news "' + (e.detail.title.slice(0, 50) + '...') + '"?')) {
+					let res = await applyToArticle(e.detail.id, 'publish');
+					if (res) window.location.reload();
+				}
+			});
 
-            // Cancel publication
-            document.addEventListener('cancel-article-publication', async e => {
-                if (confirm('Do you want to cancel publication of news "' + (e.detail.title.slice(0, 50) + '...') + '"?')) {
-                    let res = await applyToArticle(e.detail.id, 'cancel-publication');
-                    if (res) window.location.reload();
-                }
-            });
+			// Cancel publication
+			document.addEventListener('cancel-article-publication', async e => {
+				if (confirm('Do you want to cancel publication of news "' + (e.detail.title.slice(0, 50) + '...') + '"?')) {
+					let res = await applyToArticle(e.detail.id, 'cancel-publication');
+					if (res) window.location.reload();
+				}
+			});
 
-            // Edit
-            document.addEventListener('edit-article', async e => {
-                window.location = '/admin/blog/edit/' + e.detail.id;
-            });
-        })();
-    </script>
+			// Edit
+			document.addEventListener('edit-article', async e => {
+				window.location = '/admin/blog/edit/' + e.detail.id;
+			});
+		})();
+	</script>
 @endsection

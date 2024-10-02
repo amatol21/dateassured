@@ -59,6 +59,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/account/profile', [AccountController::class, 'profile'])->name('account.profile');
 	Route::get('/account/matches', [AccountController::class, 'matches'])->name('account.matches');
 	Route::get('/account/wallet', [AccountController::class, 'wallet'])->name('account.wallet');
+	Route::get('/account/search', [AccountController::class, 'search'])->name('account.search');
 	Route::post('/account/profile/save', [AccountController::class, 'saveProfile'])->name('account.saveProfile');
 
 	Route::get('account/complaint/{id}', [AccountController::class, 'complaintDetails'])->name('account.complaint');

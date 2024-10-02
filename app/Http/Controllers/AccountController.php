@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 class AccountController extends Controller
 {
@@ -94,5 +96,13 @@ class AccountController extends Controller
 		$complaint = Complaint::where('id', $id)->first();
 		if ($complaint === null || $complaint->creator_id != Auth::id()) abort(404);
 		return view('account.complaint', ['complaint' => $complaint]);
+	}
+
+	public function Search(Request $request): View|string
+	{
+		$users = User::orderBy('id', 'asc')->paginate(16);
+		//dd($users);
+		return view('account.search', compact('users'))
+			->fragmentsIf($request->ajax(), ['meta', 'accountContent']);
 	}
 }

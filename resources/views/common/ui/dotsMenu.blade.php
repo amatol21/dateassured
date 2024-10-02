@@ -119,7 +119,6 @@
                 onclick="
                     document.dispatchEvent(new CustomEvent('dots-menu-hide', {detail: this}));
                     document.dispatchEvent(new CustomEvent('{{ $event }}', {detail: {{ json_encode($option['payload']) }}}));
-						  console.log('111');
             ">{{ $option['label'] }}</div>
         @endforeach
     </div>
@@ -127,54 +126,55 @@
 
 @once
 <script>
-    (() => {
-        async function hideMenu(menu) {
-            let activeOptions = menu.querySelector('.dots-menu_options');
-            menu.classList.remove('active');
-            await animate(k => activeOptions.style.opacity = (1 - k).toString(), 150);
-            activeOptions.style.display = null;
-        }
+	(() => {
+		async function hideMenu(menu) {
+			let activeOptions = menu.querySelector('.dots-menu_options');
+			menu.classList.remove('active');
+			await animate(k => activeOptions.style.opacity = (1 - k).toString(), 150);
+			activeOptions.style.display = null;
+		}
 
-        // Show options when user clicks on menu dots.
-        document.addEventListener('dots-menu-open', async e => {
-            let menu = e.detail.parentNode;
-            let options = menu.querySelector('.dots-menu_options');
-            let rect = e.detail.getBoundingClientRect();
-            options.style.opacity = '0';
-            options.style.display = 'flex';
+		// Show options when user clicks on menu dots.
+		document.addEventListener('dots-menu-open', async e => {
+			let menu = e.detail.parentNode;
+			console.log(e);
+			let options = menu.querySelector('.dots-menu_options');
+			let rect = e.detail.getBoundingClientRect();
+			options.style.opacity = '0';
+			options.style.display = 'flex';
 
-            let activeMenu = document.querySelector('.dots-menu.active');
-            if (activeMenu !== null) hideMenu(activeMenu);
+			let activeMenu = document.querySelector('.dots-menu.active');
+			if (activeMenu !== null) hideMenu(activeMenu);
 
-            menu.classList.add('active');
-            options.style.left = rect.right - rect.width + 'px';
-            if (rect.top > window.innerHeight - 300) {
-                options.classList.remove('arrow-up');
-                options.classList.add('arrow-down');
-                options.style.top = null;
-                options.style.bottom = window.innerHeight - rect.bottom + rect.height + 5 + 'px';
-            } else {
-                options.classList.add('arrow-up');
-                options.classList.remove('arrow-down');
-                options.style.bottom = null;
-                options.style.top = rect.top + rect.height + 5 + 'px';
-            }
-            await animate(k => {
-                options.style.opacity = k.toString();
-            }, 150);
-        });
+			menu.classList.add('active');
+			options.style.left = rect.right - rect.width + 'px';
+			if (rect.top > window.innerHeight - 300) {
+				options.classList.remove('arrow-up');
+				options.classList.add('arrow-down');
+				options.style.top = null;
+				options.style.bottom = window.innerHeight - rect.bottom + rect.height + 5 + 'px';
+			} else {
+				options.classList.add('arrow-up');
+				options.classList.remove('arrow-down');
+				options.style.bottom = null;
+				options.style.top = rect.top + rect.height + 5 + 'px';
+			}
+			await animate(k => {
+				options.style.opacity = k.toString();
+			}, 150);
+		});
 
-        // Hide active menu when user clicks any option.
-        document.addEventListener('dots-menu-hide', e => {
+		// Hide active menu when user clicks any option.
+		document.addEventListener('dots-menu-hide', e => {
 
-            hideMenu(e.detail.parentNode.parentNode);
-        });
+			hideMenu(e.detail.parentNode.parentNode);
+		});
 
-        // Hide active menu when user clicks outside the menu.
-        document.addEventListener('click', () => {
-            let activeMenu = document.querySelector('.dots-menu.active');
-            if (activeMenu !== null) hideMenu(activeMenu);
-        });
-    })();
+		// Hide active menu when user clicks outside the menu.
+		document.addEventListener('click', () => {
+			let activeMenu = document.querySelector('.dots-menu.active');
+			if (activeMenu !== null) hideMenu(activeMenu);
+		});
+	})();
 </script>
 @endonce

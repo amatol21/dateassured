@@ -32,6 +32,7 @@
 @import "account/index.css";
 @import "account/video-sessions.css";
 @import "account/profile.css";
+@import "account/search.css";
 
 @import "admin/index.css";
 @import "admin/video-sessions/form.css";

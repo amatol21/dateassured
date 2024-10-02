@@ -30,7 +30,7 @@ $kids_arr = Kids::cases();
 @extends('account.index')
 
 @section('title')
-    Profile | DateAssured
+	Profile | DateAssured
 @endsection
 
 @section('accountContent')
