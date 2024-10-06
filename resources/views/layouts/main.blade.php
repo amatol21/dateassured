@@ -34,7 +34,7 @@
 			) ?>;
 		</script>
 
-		<script src="{{ asset('js/script.js')}}" defer></script>
+		<script src="{{ asset('js/script.js')}}"></script>
 		<!--<link rel="stylesheet" href="{{ asset('public/css/index.css') }}"/>
 		<script src="{{ asset('public/js/script.js') }}"></script>--> 
 	</head>
