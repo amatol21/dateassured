@@ -42,6 +42,9 @@ $kids_arr = Kids::cases();
 
 	@php
 	//dump(auth()->user()->sexuality->value );
+	if(!empty($ethnicity_value)){
+		dump($ethnicity_value);
+	}
 	@endphp
 
 	<div>
@@ -127,7 +130,7 @@ $kids_arr = Kids::cases();
 
 				<label>
 					<span class="label">Ethnicity</span>
-					<select name="ethnicity" class="select">
+					<select name="ethnicity" class="select" data-selected="{{$ethnicity_value ?? 'false'}}">
 						@foreach ($ethnicity_arr as $ethnicity)
 							<option value="{{ $ethnicity->value }}"
 								@if(old('ethnicity', auth()->user()->ethnicity) === $ethnicity->value) selected @endif>
@@ -140,7 +143,7 @@ $kids_arr = Kids::cases();
 
 				<label>
 					<span class="label">Religion</span>
-					<select name="religion" class="select">
+					<select name="religion" class="select" data-selected="{{$religion_value ?? 'false'}}">
 						@foreach ($religion_arr as $religion)
 							<option value="{{ $religion->value }}"
 								@if(old('religion', auth()->user()->religion) === $religion->value) selected @endif>
@@ -166,7 +169,7 @@ $kids_arr = Kids::cases();
 
 				<label>
 					<span class="label">Body type</span>
-					<select name="body" class="select">
+					<select name="body" class="select" data-selected="{{$body_type_value ?? 'false'}}">
 						@foreach ($body_arr as $body)
 							<option value="{{ $body->value }}"
 								@if(old('body', auth()->user()->body) === $body->value) selected @endif>
@@ -179,7 +182,7 @@ $kids_arr = Kids::cases();
 
 				<label>
 					<span class="label">Education</span>
-					<select name="education" class="select">
+					<select name="education" class="select" data-selected="{{$education_value ?? 'false'}}">
 						@foreach ($education_arr as $education)
 							<option value="{{ $education->value }}"
 								@if(old('education', auth()->user()->education) === $education->value) selected @endif>
@@ -192,7 +195,7 @@ $kids_arr = Kids::cases();
 
 				<label>
 					<span class="label">Occupation</span>
-					<select name="occupation" class="select">
+					<select name="occupation" class="select" data-selected="{{$occupation_value ?? 'false'}}">
 						@foreach ($occupation_arr as $occupation)
 							<option value="{{ $occupation->value }}" data-val="{{gettype(auth()->user()->occupation)}}"
 								@if(old('occupation', auth()->user()->occupation) === $occupation->value) selected @endif>
@@ -205,7 +208,7 @@ $kids_arr = Kids::cases();
 
 				<label>
 					<span class="label">Sexuality</span>
-					<select name="sexuality" class="select">
+					<select name="sexuality" class="select" data-selected="{{$sexuality_value ?? 'false'}}">
 						@foreach ($sexuality_arr as $sexuality)
 							<option value="{{ $sexuality->value }}" data-val="{{auth()->user()->sexuality}}" 
 								@if(old('sexuality', auth()->user()->sexuality) === $sexuality->value) selected @endif>
@@ -218,7 +221,7 @@ $kids_arr = Kids::cases();
 
 				<label>
 					<span class="label">Star sign</span>
-					<select name="star_sign" class="select">
+					<select name="star_sign" class="select" data-selected="{{$star_sign_value ?? 'false'}}">
 						@foreach ($star_sign_arr as $star_sign)
 							<option value="{{ $star_sign->value }}"
 								@if(old('star_sign', auth()->user()->star_sign) === $star_sign->value) selected @endif>
@@ -231,7 +234,7 @@ $kids_arr = Kids::cases();
 
 				<label>
 					<span class="label">Status</span>
-					<select name="relationship_status" class="select">
+					<select name="relationship_status" class="select" data-selected="{{$relationship_status_value ?? 'false'}}">
 						@foreach ($relationship_status_arr as $relationship_status)
 							<option value="{{ $relationship_status->value }}"
 								@if(old('relationship_status', auth()->user()->relationship_status) === $relationship_status->value) selected @endif>
@@ -244,7 +247,7 @@ $kids_arr = Kids::cases();
 
 				<label>
 					<span class="label">Do you have kids?</span>
-					<select name="kids" class="select">
+					<select name="kids" class="select" data-selected="{{$kids_value ?? 'false'}}">
 						@foreach ($kids_arr as $kids)
 							<option value="{{ $kids->value }}"
 								@if(old('kids', auth()->user()->kids) === $kids->value) selected @endif>
@@ -303,6 +306,14 @@ $kids_arr = Kids::cases();
 							await hideSpinner(form, 'Saved');
 							let html = await res.text();
 							setInnerHtml('#content', html);
+
+							let changed_select_arr = document.querySelectorAll("select[data-selected]");
+							//console.log(changed_select_arr);
+							changed_select_arr.forEach((elem) => {
+								let attr_value = elem.getAttribute('data-selected');
+								//console.log(attr_value);
+								elem.selectedIndex = attr_value;
+							});
 						} else {
 							let data = await res.json();
 							showFormErrors(form, data);

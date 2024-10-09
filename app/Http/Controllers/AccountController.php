@@ -86,7 +86,17 @@ class AccountController extends Controller
 		$user->save();
 
 		return $request->ajax()
-			? view('account.profile')->fragment('content')
+			? view('account.profile', [
+				'ethnicity_value' => $user->ethnicity, 
+				'religion_value' => $user->religion, 
+				'body_type_value' => $user->body, 
+				'education_value' => $user->education, 
+				'occupation_value' => $user->occupation, 
+				'sexuality_value' => $user->sexuality, 
+				'star_sign_value' => $user->star_sign, 
+				'relationship_status_value' => $user->relationship_status, 
+				'kids_value' => $user->kids
+			])->fragment('content')
 			: redirect()->route('account.profile');
 	}
 
