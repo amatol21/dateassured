@@ -42,9 +42,6 @@ $kids_arr = Kids::cases();
 
 	@php
 	//dump(auth()->user()->sexuality->value );
-	if(!empty($ethnicity_value)){
-		dump($ethnicity_value);
-	}
 	@endphp
 
 	<div>
