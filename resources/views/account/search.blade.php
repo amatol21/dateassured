@@ -88,7 +88,7 @@ $kids_arr = Kids::cases();
 						@endif
 						<input type="hidden" name="nickname" value="{{$user->username}}">
 						<input type="hidden" name="age" value="{{$user->age}}">
-						<input type="hidden" name="country" value="">
+						<input type="hidden" name="country" value="{{$user->country}}">
 						<input type="hidden" name="interests" value="{{$user->about}}">
 					</div>
 				@endforeach
@@ -135,9 +135,10 @@ $kids_arr = Kids::cases();
 							});
 							
 							searchInfo.querySelector('.search__photo').setAttribute('src', usersPopupInfoArr['photo']);
-							searchInfo.querySelector('.search__nickname').textContent = usersPopupInfoArr['nickname'];
-							searchInfo.querySelector('.search__age').textContent = usersPopupInfoArr['age'];
-							searchInfo.querySelector('.search__interests').textContent = usersPopupInfoArr['about'];
+							searchInfo.querySelector('.search__nickname').textContent = `Nickname: ${usersPopupInfoArr['nickname']}`;
+							searchInfo.querySelector('.search__age').textContent = `Age: ${usersPopupInfoArr['age']}`;
+							searchInfo.querySelector('.search__country').textContent = `Country: ${usersPopupInfoArr['country']}`;
+							searchInfo.querySelector('.search__interests').textContent = `About person: ${usersPopupInfoArr['interests']}`;
 
 							const elemData = elem.getBoundingClientRect();
 							searchInfo.style.display = 'block';

@@ -105,12 +105,22 @@ $kids_arr = Kids::cases();
 					<span class="error">{{ $message }}</span>
 					@enderror
 				</label>
-
+{{--
 				<label>
 					<span class="label">Nationality</span>
 					<input type="text" name="nationality" class="input" value="{{ old('nationality', auth()->user()->nationality) }}"> 
 					<span class="error" data-for="nationality"></span>
 					@error('nationality')
+					<span class="error">{{ $message }}</span>
+					@enderror
+				</label>
+--}}
+
+				<label>
+					<span class="label">Your country</span>
+					<input type="text" name="country" class="input" value="{{ old('country', auth()->user()->country) }}"> 
+					<span class="error" data-for="country"></span>
+					@error('country')
 					<span class="error">{{ $message }}</span>
 					@enderror
 				</label>

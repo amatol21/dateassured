@@ -62,7 +62,7 @@ class AccountController extends Controller
 			'first_name' => ['required', 'max:32', 'alpha'],
 			'second_name' => ['required', 'max:64', 'alpha'],
 			'age' => ['numeric', 'min:18', 'max:100'],
-			'nationality' => ['required', 'max:32', 'alpha'],
+			'country' => ['required', 'max:32', 'alpha'],
 			'about' => ['max:512', new Sentence]
 		]);
 
@@ -71,7 +71,7 @@ class AccountController extends Controller
 		$user->second_name = $request->post('second_name', $user->second_name);
 		$user->age = intval($request->post('age', $user->age));
 		$user->gender = Gender::from(intval($request->post('gender', $user->gender)));
-		$user->nationality = $request->post('nationality', $user->nationality);
+		$user->country = $request->post('country', $user->country);
 		$user->ethnicity = $request->post('ethnicity', $user->ethnicity);
 		$user->religion = $request->post('religion', $user->religion);
 		$user->languages = $request->post('languages', $user->languages);

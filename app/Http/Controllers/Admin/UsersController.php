@@ -61,7 +61,7 @@ class UsersController extends Controller
 			'first_name' => ['required', 'max:32', 'alpha'],
 			'second_name' => ['required', 'max:64', 'alpha'],
 			'age' => ['numeric', 'min:18', 'max:100'],
-			'nationality' => ['required', 'max:32', 'alpha'],
+			'country' => ['required', 'max:32', 'alpha'],
 			'about' => ['max:512', new Sentence]
 		]);
 
@@ -72,14 +72,13 @@ class UsersController extends Controller
 		$user->age = $request->age;
 		$user->sexuality = $request->sexuality;
 		$user->gender = $request->gender;
-		$user->nationality = $request->nationality;
+		$user->country = $request->country;
 		$user->ethnicity = $request->ethnicity;
 		$user->religion = $request->religion;
 		$user->languages = $request->languages;
 		$user->body = $request->body;
 		$user->education = $request->education;
 		$user->occupation = $request->occupation;
-		$user->sexuality = $request->sexuality;
 		$user->star_sign = $request->star_sign; 
 		$user->relationship_status = $request->relationship_status;
 		$user->kids = $request->kids; 
