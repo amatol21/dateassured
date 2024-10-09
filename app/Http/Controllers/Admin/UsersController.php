@@ -88,7 +88,9 @@ class UsersController extends Controller
 			$user->role_id = $request->role_id;
 		}
 		if ($request->has('password') && !empty($request->password)) {
+
 			$user->password = Hash::make($request->password);
+			
 		}
 		if ($user->save()) {
 			Toast::success($request->has('id')
