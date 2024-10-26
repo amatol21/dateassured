@@ -3,6 +3,7 @@
     use App\Enums\Gender;
     use App\Helpers\Svg;
     use App\Models\Country;
+	 use Illuminate\Support\Number;
 @endphp
 
 @extends('layouts.main')
@@ -23,8 +24,11 @@
 						<div class="account_name">
 							{{ auth()->user()->username }}
 						</div>
-						<div class="account_location">
+						<div class="account_location flex ai-center jc-center">
 							<?= Svg::icon('location', 16, 16) ?> Location: {{ Country::getCurrent()->name }}
+						</div>
+						<div class="account_balance flex jc-center">
+							Balance: {{ number_format(auth()->user()->money, 0, ',', ' ') }}
 						</div>
 
 						<nav class="account_nav">
