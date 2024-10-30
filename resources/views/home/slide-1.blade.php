@@ -3,12 +3,15 @@
         <div class="s1_texts">
             <div class="s1_free-label">100% Free</div>
             <h1 class="s1_title">Date <br/> Assured</h1>
-            <div class="s1_slogan">Online Speed Dating</div>
-            <a href="{{ route('register') }}"
-               class="btn btn-black mr-auto mt-2"
-               style="width: 10rem"
-               onclick="event.preventDefault(); document.dispatchEvent(new CustomEvent('show-reg-modal'))"
-            >Registration</a>
+            <div class="s1_slogan" style="margin-bottom: 10px;">Online Speed Dating</div>
+            <div class="flex">
+					<a href="{{ route('register') }}"
+						class="btn mr-1"
+						style="width: 10rem"
+						onclick="event.preventDefault(); document.dispatchEvent(new CustomEvent('show-reg-modal'))"
+					>Registration</a>
+					<a href="/faq" class="btn btn-pink">HOW IT WORKS?</a>
+				</div>
         </div>
 
         <div class="s1_clock">
